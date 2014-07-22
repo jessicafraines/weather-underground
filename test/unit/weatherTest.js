@@ -63,6 +63,36 @@ describe('Weather', function(){
        });
     });
   }); 
+  describe('.highs', function(){
+    it('should return 10 day high temperatures', function(done){
+      Weather.highs(37206, function(highs){
+       console.log(highs);
+       expect(highs.length).to.equal(10);
+       done();
+       });
+     });
+  }); 
+  describe('.lows', function(){
+    it('should return 10 day low temperatures', function(done){
+      Weather.lows(37206, function(lows){
+       console.log(lows);
+       expect(lows.length).to.equal(10);
+       done();
+       });
+     });
+  }); 
+  describe('.deltas', function(){
+    it('should return the difference in highs and lows', function(done){
+      Weather.deltas(37206, function(deltas){
+       console.log(deltas);
+       expect(deltas.length).to.equal(10);
+         for(var i = 0; i < deltas.length; i++){
+           expect(deltas[i]).to.be.at.least(10);
+          }
+       done();
+       });
+     });
+  }); 
   
   
   
