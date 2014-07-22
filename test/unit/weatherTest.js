@@ -14,20 +14,17 @@ describe('Weather', function(){
     });
   });
 
-
   describe('.high', function(){
     it('should return the high temperature', function(done){
      Weather.high(37206, function(high){
        console.log(high);
     
-       // expect(high).to.be.ok;
        expect(high.length).to.be.at.least(2);
 
        done();
         });
     });
   }); 
-  
   
   describe('.low', function(){
     it('should return the low  temperature', function(done){
@@ -36,6 +33,31 @@ describe('Weather', function(){
     
        //expect(low).to.be.ok;
        expect(low.length).to.be.at.least(2);
+
+       done();
+       });
+    });
+  }); 
+  describe('.avgHigh', function(){
+    it('should return the average high temperature', function(done){
+      Weather.avgHigh(37206, function(avg, length){
+       console.log(avg);
+    
+       expect(avg).to.be.at.least('80F');
+       expect(length).to.equal(10);
+
+       done();
+       });
+    });
+  }); 
+  describe('.avgLow', function(){
+    it('should return the average low temperature', function(done){
+      Weather.avgLow(37206, function(avg, length, dev){
+       console.log(avg);
+       console.log(dev);
+    
+       expect(avg).to.be.at.least('60F');
+       expect(length).to.equal(10);
 
        done();
        });
