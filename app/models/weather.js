@@ -1,3 +1,4 @@
+/*jshint camelcase: false*/
 'use strict';
 var request = require('request');
 
@@ -48,10 +49,6 @@ Weather.avgLow = function(zip, cb){
     var dev = stdDev(sum / temps.length, temps, 'low');
     cb((sum / temps.length) + 'F', temps.length, dev);
   });
-  
-
-
-
 };
 
 Weather.highs = function(zip, cb){
@@ -79,7 +76,6 @@ Weather.lows = function(zip, cb){
     }
     cb(f);
   });
-
 };
 
 Weather.deltas = function(zip, cb){
@@ -92,6 +88,39 @@ Weather.deltas = function(zip, cb){
      f.push(parseInt(temps[i].high.fahrenheit - temps[i].low.fahrenheit));
     }
     cb(f);
+  });
+
+};
+
+Weather.moon = function(zip, cb){
+  var url = 'http://api.wunderground.com/api/9b9842efc9926224/astronomy/q/' + zip + '.json';
+  request(url, function(error, response, body){
+    body = JSON.parse(body);
+    console.log(body.moon_phase.percentIlluminated);
+
+    var percent = body.moon_phase.percentIlluminated;
+    var phase = '';
+    if(percent <= 5) {
+      phase = 'New';
+
+    }
+    else if(percent <= 44 && percent >= 6) {
+      phase = 'Crescent';
+
+    }
+    else if(percent <= 55 && percent >= 45) {
+      phase = 'Quarter';
+
+    }
+    else if(percent <= 94 && percent >= 56) {
+      phase = 'Gibbous';
+
+    }
+    else if(percent >= 95) {
+      phase = 'Full';
+
+    }
+    cb(phase, percent);
   });
 
 };
