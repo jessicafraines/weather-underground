@@ -13,7 +13,6 @@ describe('Weather', function(){
     expect(w.zip).to.equal(37206);
     });
   });
-
   describe('.high', function(){
     it('should return the high temperature', function(done){
      Weather.high(37206, function(high){
@@ -22,10 +21,9 @@ describe('Weather', function(){
        expect(high.length).to.be.at.least(2);
 
        done();
-        });
+      });
     });
   }); 
-  
   describe('.low', function(){
     it('should return the low  temperature', function(done){
       Weather.low(37206, function(low){
@@ -35,7 +33,7 @@ describe('Weather', function(){
        expect(low.length).to.be.at.least(2);
 
        done();
-       });
+      });
     });
   }); 
   describe('.avgHigh', function(){
@@ -47,7 +45,7 @@ describe('Weather', function(){
        expect(length).to.equal(10);
 
        done();
-       });
+      });
     });
   }); 
   describe('.avgLow', function(){
@@ -60,7 +58,7 @@ describe('Weather', function(){
        expect(length).to.equal(10);
 
        done();
-       });
+      });
     });
   }); 
   describe('.highs', function(){
@@ -69,8 +67,8 @@ describe('Weather', function(){
        console.log(highs);
        expect(highs.length).to.equal(10);
        done();
-       });
-     });
+      });
+    });
   }); 
   describe('.lows', function(){
     it('should return 10 day low temperatures', function(done){
@@ -78,8 +76,8 @@ describe('Weather', function(){
        console.log(lows);
        expect(lows.length).to.equal(10);
        done();
-       });
-     });
+      });
+    });
   }); 
   describe('.deltas', function(){
     it('should return the difference in highs and lows', function(done){
@@ -90,8 +88,8 @@ describe('Weather', function(){
            expect(deltas[i]).to.be.at.least(10);
           }
        done();
-       });
-     });
+      });
+    });
   }); 
   describe('.moon', function(){
     it('should return the current phase of the moon', function(done){
@@ -100,12 +98,8 @@ describe('Weather', function(){
        expect(perc).to.be.within(0,100);
        expect(moon).to.be.a('string');
        done();
-       });
-     });
+      });
+    });
   }); 
-  
-  
-  
-  
 });
 
